@@ -1,0 +1,25 @@
+# Тесты работают на H2 в режиме совместимости с PostgreSQL, Docker для них не нужен.
+spring:
+  datasource:
+    url: jdbc:h2:mem:shortener;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  cache:
+    cache-names: links
+    caffeine:
+      spec: maximumSize=1000
+  mvc:
+    problemdetails:
+      enabled: true
+
+shortener:
+  base-url: http://sho.rt
+  code-length: 7
+  max-ttl-days: 365
+  stats-zone: Europe/Moscow

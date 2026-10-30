@@ -1,0 +1,15 @@
+# Maven
+target/
+
+# IntelliJ IDEA: личные настройки IDE не коммитим, общие конфигурации запуска лежат в .run/
+.idea/
+*.iml
+out/
+
+# HTTP Client: личные переменные окружения
+http/http-client.private.env.json
+
+# Прочее
+.DS_Store
+*.log
+.env

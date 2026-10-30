@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: url-shortener
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shortener}
+    username: ${DB_USER:shortener}
+    password: ${DB_PASSWORD:shortener}
+  jpa:
+    hibernate:
+      ddl-auto: validate   # схему создаёт Flyway, Hibernate только проверяет её
+    open-in-view: false
+  flyway:
+    enabled: true
+  cache:
+    cache-names: links
+    caffeine:
+      spec: maximumSize=10000,expireAfterWrite=10m
+  mvc:
+    problemdetails:
+      enabled: true
+
+shortener:
+  base-url: ${BASE_URL:http://localhost:8080}
+  code-length: 7
+  max-ttl-days: 365
+  stats-zone: Europe/Moscow
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
